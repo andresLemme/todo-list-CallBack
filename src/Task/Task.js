@@ -10,7 +10,7 @@ function Task(props) {
   return (
     <li
       onClick={handleClick}
-      style={props.isCompleted ? { color: "green", cursor: "pointer" } : { color: "black", cursor:"pointer" }}
+      style={props.isCompleted ? { color: "green", cursor: "pointer", textDecorationLine: "line-through"  } : { color: "black", cursor:"pointer" }}
     >
      
       {props.name}
