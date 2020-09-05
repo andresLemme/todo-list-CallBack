@@ -1,25 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Addtask from './Addtask/Addtask';
+import Tasks from './Tasks/Tasks';
 
 function App() {
+  const [tasks, setTasks] = useState([])
+
+  function handleInputValue(value){
+    setTasks([
+      ...tasks,
+      {
+        value,
+        isCompleted: false
+      }
+    ])
+  }
+ function handleCallback(name){
+   const modifiedTasks = tasks.map((task) =>{
+     
+    if (task.value == name) {
+      return {
+        value: task.value,
+        isCompleted: !task.isCompleted
+      };
+    }
+
+    return task;
+   })
+   setTasks(modifiedTasks)
+ }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Addtask handleCallback={handleInputValue}/>
+    <Tasks handleCallback={handleCallback} tasks={tasks} />
+    Tareas resueltas:
+    <ul>
+      aca van
+    </ul>
+
+    </>
   );
 }
 
