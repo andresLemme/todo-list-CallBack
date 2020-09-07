@@ -8,8 +8,9 @@ function Addtask(props) {
   }
 
   function handleAdd() {
-    if (inputValue && props.handleCallback) {
-      props.handleCallback(inputValue)
+    //chequeando  en inputValue que el valor no sea false, null, undefined o vacio
+    if (inputValue && props.handleCallback) { // este if es para evitar  potenciales errores y no explote y chequeda que existe la props
+      props.handleCallback(inputValue) // Valor actual de cada input
       setInputValue("")
     }
   }

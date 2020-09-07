@@ -8,7 +8,7 @@ function App() {
   const [tasks, setTasks] = useState([])
 
   function handleInputValue(value){
-    setTasks([
+    setTasks([  
       ...tasks,
       {
         value,
@@ -32,7 +32,7 @@ function App() {
  }
   return (
     <>
-    <Addtask handleCallback={handleInputValue}/>
+    <Addtask handleCallback={handleInputValue}/>  {/* //recibimos el valor de nuestro hijo el valor del input */}
     <Tasks handleCallback={handleCallback} tasks={tasks} />
     Tareas resueltas:
     <ul>
