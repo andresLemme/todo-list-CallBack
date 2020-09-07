@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Addtask from './Addtask/Addtask';
 import Tasks from './Tasks/Tasks';
 
 function App() {
   const [tasks, setTasks] = useState([])
+  const [login, setLogin] = useState("")
+  const [id, setId] = useState("")
 
   function handleInputValue(value){
     setTasks([  
@@ -30,6 +31,22 @@ function App() {
    })
    setTasks(modifiedTasks)
  }
+
+  useEffect(()=>{
+     async function fetchData() {
+        const data = await fetch ("https://api.github.com/users/andresLemme");
+        const dataJson = await data.json();
+
+        console.log(dataJson)
+        setId(dataJson.id)
+        setLogin(dataJson.login)
+      }
+      fetchData();
+
+  }, []) 
+
+ 
+
   return (
     <>
     <Addtask handleCallback={handleInputValue}/>  {/* //recibimos el valor de nuestro hijo el valor del input */}
@@ -38,6 +55,9 @@ function App() {
     <ul>
       aca van
     </ul>
+    <p>Login: {login}</p>
+    <p>Mi ID:  {id}</p>
+
 
     </>
   );

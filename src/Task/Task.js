@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Task(props) {
 
@@ -6,7 +6,9 @@ function Task(props) {
     const { name } = props;
 
     props.handleCallback(name); //Esta linea es la que manda de Task a Tasks
-  }
+  };
+ 
+ 
   return (
     <li
       onClick={handleClick}
