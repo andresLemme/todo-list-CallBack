@@ -51,10 +51,7 @@ function App() {
     <>
     <Addtask handleCallback={handleInputValue}/>  {/* //recibimos el valor de nuestro hijo el valor del input */}
     <Tasks handleCallback={handleCallback} tasks={tasks} />
-    Tareas resueltas:
-    <ul>
-      aca van
-    </ul>
+  
     <p>Login: {login}</p>
     <p>Mi ID:  {id}</p>
 
